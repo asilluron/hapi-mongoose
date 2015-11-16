@@ -108,7 +108,7 @@ describe('Default Options with failed connection', () => {
       expect(args[1]).to.equal('Unable to connect to database: test');
 
       done();
-    }, 3); // TODO : Avoid using a timeout for events
+    }, 100); // TODO : Avoid using a timeout for events
   });
 });
 
