@@ -20,7 +20,6 @@ server.register({
 var dbConn = server.methods.mongoose();
 ```
 ## Options
-* async
-Setting async to true will wrap the mongoose module with bluebird promises via ``` promisifyAll ```
+* bluebird - setting this option to true will use bluebird promises in place of mongoose's built in 'mpromise'. [Read More](http://mongoosejs.com/docs/promises.html)
 * uri
 [MongoDB uri](https://docs.mongodb.org/v3.0/reference/connection-string/)

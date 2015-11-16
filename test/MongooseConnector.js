@@ -27,7 +27,7 @@ describe('Default Options', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({async: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
     done();
   });
 
@@ -55,7 +55,7 @@ describe('Default Options', () => {
   });
 });
 
-describe('With Async (bluebird)', () => {
+describe('With bluebird (bluebird)', () => {
   let mongooseConnector, mongooseEmitter, pluginStub; //eslint-disable-line
   let MongooseEmitter = require('./artifacts/MongooseEmitter');
 
@@ -65,12 +65,12 @@ describe('With Async (bluebird)', () => {
       log: log => log
     };
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({async: true}, pluginStub);
+    mongooseConnector = new MongooseConnector({bluebird: true}, pluginStub);
     done();
   });
 
   it('is an instance of EventEmitter', done => {
-    expect(typeof mongooseEmitter.createConnectionAsync).to.equal('function');
+    expect(mongooseEmitter.Promise).to.equal(require('bluebird'));
 
     done();
   });
@@ -87,7 +87,7 @@ describe('Default Options with failed connection', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({async: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
     mongooseConnector.on('error', err => err);
     done();
   });
@@ -123,7 +123,7 @@ describe('Default Options with closed connection', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({async: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
     mongooseConnector.on('error', err => err);
     done();
   });
@@ -151,7 +151,7 @@ describe('Default Options with disconnected connection', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({async: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
     mongooseConnector.on('error', err => err);
     done();
   });
