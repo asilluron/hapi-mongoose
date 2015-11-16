@@ -1,6 +1,6 @@
 {
   "name": "hapi-mongoose",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Hapi Plugin to handle Mongoose handshake and initial setup",
   "main": "lib/index.js",
   "scripts": {
