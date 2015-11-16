@@ -108,7 +108,7 @@ describe('Default Options with failed connection', () => {
       expect(args[1]).to.equal('Unable to connect to database: test');
 
       done();
-    }, 100); // TODO : Avoid using a timeout for events
+    }, 10); // TODO : Avoid using a timeout for events
   });
 });
 
@@ -136,7 +136,7 @@ describe('Default Options with closed connection', () => {
       expect(args[1]).to.equal('Connection to database closed');
 
       done();
-    }, 2);
+    }, 10);
   });
 });
 
@@ -164,6 +164,6 @@ describe('Default Options with disconnected connection', () => {
       expect(args[1]).to.equal('Connection to database disconnected');
 
       done();
-    }, 2);
+    }, 10);
   });
 });

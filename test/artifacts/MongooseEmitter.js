@@ -6,7 +6,7 @@ class MongooseEmitter extends EventEmitter {
   constructor (eventToEmit, eventArgs) {
     super();
 
-    setTimeout(() => this.emit(eventToEmit, eventArgs), 1);
+    setTimeout(() => this.emit(eventToEmit, eventArgs), 2);
   }
 }
 
