@@ -26,7 +26,13 @@ describe('Default Options', () => {
   });
 
   it('sets up mongoose', done => {
-    expect(server.methods.mongoose()).to.equal('connection');
+    expect(server.methods.mongooseDb()).to.equal('connection');
+
+    done();
+  });
+
+  it('allows for a reference to originally imported mongoose', done => {
+    expect(server.methods.mongoose()).to.equal('original lib import');
 
     done();
   });

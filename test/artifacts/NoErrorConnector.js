@@ -8,6 +8,7 @@ class ConnectorStub extends EventEmitter {
     super();
 
     this.connection = 'connection';
+    this.mongoose = 'original lib import';
 
     setTimeout(() => {
       this.emit('ready');

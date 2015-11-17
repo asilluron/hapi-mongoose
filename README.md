@@ -5,6 +5,12 @@
 
 Hapi Plugin to handle Mongoose handshake and initial setup
 
+## Requirements
+* Mongoose
+```
+npm install --save mongoose
+```
+
 ## Usage
 ```
 var options = {
@@ -19,8 +25,13 @@ server.register({
     options: options
 }, function (err) { });
 
-var dbConn = server.methods.mongoose();
+var dbConn = server.methods.mongooseDb();
+
+var mongooseLib = server.methods.mongoose();
 ```
+
+It is important to use ```server.methods.mongoose()``` instead of ```require('mongoose')``` due to [this issue](https://github.com/Automattic/mongoose/issues/2669).
+
 ## Options
 * bluebird - setting this option to true will use bluebird promises in place of mongoose's built in 'mpromise'. [Read More](http://mongoosejs.com/docs/promises.html)
 * uri
