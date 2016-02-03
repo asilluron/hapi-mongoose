@@ -17,7 +17,7 @@ npm install --save mongoose
 ## Usage
 ```
 var options = {
-    async: false,
+    bluebird: false,
     uri: 'mongodb://localhost:27017'
 };
 
