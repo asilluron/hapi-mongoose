@@ -4,7 +4,10 @@
 [![Stories in Ready](https://badge.waffle.io/asilluron/hapi-mongoose.svg?label=ready&title=Ready&style=flat-square)](http://waffle.io/asilluron/hapi-mongoose)
 
 Hapi Plugin to handle Mongoose handshake and initial setup
-
+## Install
+```
+npm install --save hapi-mongoose
+```
 ## Requirements
 * Mongoose
 ```
