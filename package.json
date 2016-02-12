@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "bluebird": "^3.0.5",
-    "hoek": "^3.0.4"
+    "hoek": "^3.0.4",
+    "mongoose": "^4.4.3"
   }
 }
