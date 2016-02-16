@@ -28,10 +28,33 @@ server.register({
     options: options
 }, function (err) { });
 
-var dbConn = server.methods.mongooseDb();
+var db = server.methods.mongooseDb();
 
-var mongooseLib = server.methods.mongoose();
+var mongoose = server.methods.mongoose();
 ```
+
+### Example
+```
+var db = server.methods.mongooseDb(); // Get the current connection for this server instance
+var mongoose = server.methods.mongoose();
+var Schema = mongoose.Schema;
+
+var tankSchema = new Schema({
+  //tank props
+});
+
+var Tank = db.model('Tank', tankSchema);
+
+var small = new Tank({ size: 'small' });
+
+small.save(function (err) {
+  if (err) return handleError(err);
+  // saved!
+})
+
+```
+
+
 
 It is important to use ```server.methods.mongoose()``` instead of ```require('mongoose')``` due to [this issue](https://github.com/Automattic/mongoose/issues/2669).
 
