@@ -28,15 +28,15 @@ server.register({
     options: options
 }, function (err) { });
 
-var db = server.methods.mongooseDb();
+var db = server.plugins['hapi-mongoose'].connection;
 
-var mongoose = server.methods.mongoose();
+var mongoose = server.plugins['hapi-mongoose'].lib;
 ```
 
 ### Example
 ```
-var db = server.methods.mongooseDb(); // Get the current connection for this server instance
-var mongoose = server.methods.mongoose();
+var db = server.plugins['hapi-mongoose'].connection; // Get the current connection for this server instance
+var mongoose = server.plugins['hapi-mongoose'].lib;
 var Schema = mongoose.Schema;
 
 var tankSchema = new Schema({
@@ -56,7 +56,7 @@ small.save(function (err) {
 
 
 
-It is important to use ```server.methods.mongoose()``` instead of ```require('mongoose')``` due to [this issue](https://github.com/Automattic/mongoose/issues/2669).
+It is important to use ```server.plugins['hapi-mongoose'].lib``` instead of ```require('mongoose')``` due to [this issue](https://github.com/Automattic/mongoose/issues/2669).
 
 ## Options
 * bluebird - setting this option to true will use bluebird promises in place of mongoose's built in 'mpromise'. [Read More](http://mongoosejs.com/docs/promises.html)

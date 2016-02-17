@@ -26,13 +26,13 @@ describe('Default Options', () => {
   });
 
   it('sets up mongoose', done => {
-    expect(server.methods.mongooseDb()).to.equal('connection');
+    expect(server.plugins['hapi-mongoose'].connection).to.equal('connection');
 
     done();
   });
 
   it('allows for a reference to originally imported mongoose', done => {
-    expect(server.methods.mongoose()).to.equal('original lib import');
+    expect(server.plugins['hapi-mongoose'].lib).to.equal('original lib import');
 
     done();
   });
