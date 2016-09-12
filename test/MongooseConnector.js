@@ -86,7 +86,7 @@ describe('With es6 (es6)', () => {
       log: log => log
     };
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({promises: 'es'}, pluginStub);
+    mongooseConnector = new MongooseConnector({promises: 'es6'}, pluginStub);
     done();
   });
 
