@@ -97,6 +97,27 @@ describe('With es6 (es6)', () => {
   });
 });
 
+describe('With es6 (native)', () => {
+  let mongooseConnector, mongooseEmitter, pluginStub; //eslint-disable-line
+  let MongooseEmitter = require('./artifacts/MongooseEmitter');
+
+  beforeEach(done => {
+    mongooseEmitter = new MongooseEmitter('connected');
+    pluginStub = {
+      log: log => log
+    };
+    MongooseConnector.__set__('mongoose', mongooseEmitter);
+    mongooseConnector = new MongooseConnector({promises: 'native'}, pluginStub);
+    done();
+  });
+
+  it('is an instance of EventEmitter', done => {
+    expect(mongooseEmitter.Promise).to.equal(global.Promise);
+
+    done();
+  });
+});
+
 describe('Default Options with failed connection', () => {
   let mongooseConnector, mongooseEmitter, logSpy, pluginStub;
   let MongooseEmitter = require('./artifacts/MongooseEmitter');
