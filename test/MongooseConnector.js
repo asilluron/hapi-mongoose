@@ -27,7 +27,7 @@ describe('Default Options', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({promises: 'mpromise'}, pluginStub);
     done();
   });
 
@@ -65,7 +65,7 @@ describe('With bluebird (bluebird)', () => {
       log: log => log
     };
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({bluebird: true}, pluginStub);
+    mongooseConnector = new MongooseConnector({promises: 'bluebird'}, pluginStub);
     done();
   });
 
@@ -87,7 +87,7 @@ describe('Default Options with failed connection', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({promises: 'mpromise'}, pluginStub);
     mongooseConnector.on('error', err => err);
     done();
   });
@@ -123,7 +123,7 @@ describe('Default Options with closed connection', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({promises: 'mpromise'}, pluginStub);
     mongooseConnector.on('error', err => err);
     done();
   });
@@ -151,7 +151,7 @@ describe('Default Options with disconnected connection', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({promises: 'mpromise'}, pluginStub);
     mongooseConnector.on('error', err => err);
     done();
   });
