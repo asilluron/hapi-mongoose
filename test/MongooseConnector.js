@@ -27,7 +27,7 @@ describe('Default Options', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({promises: 'mpromise'}, pluginStub);
     done();
   });
 
@@ -65,12 +65,54 @@ describe('With bluebird (bluebird)', () => {
       log: log => log
     };
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({bluebird: true}, pluginStub);
+    mongooseConnector = new MongooseConnector({promises: 'bluebird'}, pluginStub);
     done();
   });
 
   it('is an instance of EventEmitter', done => {
     expect(mongooseEmitter.Promise).to.equal(require('bluebird'));
+
+    done();
+  });
+});
+
+describe('With es6 (es6)', () => {
+  let mongooseConnector, mongooseEmitter, pluginStub; //eslint-disable-line
+  let MongooseEmitter = require('./artifacts/MongooseEmitter');
+
+  beforeEach(done => {
+    mongooseEmitter = new MongooseEmitter('connected');
+    pluginStub = {
+      log: log => log
+    };
+    MongooseConnector.__set__('mongoose', mongooseEmitter);
+    mongooseConnector = new MongooseConnector({promises: 'es6'}, pluginStub);
+    done();
+  });
+
+  it('is an instance of EventEmitter', done => {
+    expect(mongooseEmitter.Promise).to.equal(global.Promise);
+
+    done();
+  });
+});
+
+describe('With es6 (native)', () => {
+  let mongooseConnector, mongooseEmitter, pluginStub; //eslint-disable-line
+  let MongooseEmitter = require('./artifacts/MongooseEmitter');
+
+  beforeEach(done => {
+    mongooseEmitter = new MongooseEmitter('connected');
+    pluginStub = {
+      log: log => log
+    };
+    MongooseConnector.__set__('mongoose', mongooseEmitter);
+    mongooseConnector = new MongooseConnector({promises: 'native'}, pluginStub);
+    done();
+  });
+
+  it('is an instance of EventEmitter', done => {
+    expect(mongooseEmitter.Promise).to.equal(global.Promise);
 
     done();
   });
@@ -87,7 +129,7 @@ describe('Default Options with failed connection', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({promises: 'mpromise'}, pluginStub);
     mongooseConnector.on('error', err => err);
     done();
   });
@@ -123,7 +165,7 @@ describe('Default Options with closed connection', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({promises: 'mpromise'}, pluginStub);
     mongooseConnector.on('error', err => err);
     done();
   });
@@ -151,7 +193,7 @@ describe('Default Options with disconnected connection', () => {
     };
     logSpy = sinon.spy(pluginStub, 'log');
     MongooseConnector.__set__('mongoose', mongooseEmitter);
-    mongooseConnector = new MongooseConnector({bluebird: false}, pluginStub);
+    mongooseConnector = new MongooseConnector({promises: 'mpromise'}, pluginStub);
     mongooseConnector.on('error', err => err);
     done();
   });

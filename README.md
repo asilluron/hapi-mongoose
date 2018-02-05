@@ -17,7 +17,7 @@ npm install --save mongoose
 ## Usage
 ```
 var options = {
-    bluebird: false,
+    promises: 'native',
     uri: 'mongodb://localhost:27017'
 };
 
@@ -59,6 +59,6 @@ small.save(function (err) {
 It is important to use ```server.plugins['hapi-mongoose'].lib``` instead of ```require('mongoose')``` due to [this issue](https://github.com/Automattic/mongoose/issues/2669).
 
 ## Options
-* bluebird - setting this option to true will use bluebird promises in place of mongoose's built in 'mpromise'. [Read More](http://mongoosejs.com/docs/promises.html)
-* uri
-[MongoDB uri](https://docs.mongodb.org/v3.0/reference/connection-string/)
+* promises - Choose your promises implementation. Valid string options are 'bluebird', 'native' (or 'es6'). Any other value will result in the use of mongoose's built in 'mpromise'. [Read More](http://mongoosejs.com/docs/promises.html)
+* uri - [MongoDB uri](https://docs.mongodb.org/v3.0/reference/connection-string/)
+* mongooseOptions - A javascript opbject with mongoose connection options. [Read More](http://mongoosejs.com/docs/connections.html#options)
