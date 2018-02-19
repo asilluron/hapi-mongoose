@@ -3,7 +3,6 @@
 var EventEmitter = require('events').EventEmitter;
 
 class ConnectorStub extends EventEmitter {
-
   constructor (options, plugin) {
     super();
 
