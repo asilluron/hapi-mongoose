@@ -253,7 +253,7 @@ bluebird@^3.0.5:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
-boom@3.x.x, boom@^3.0.0:
+boom@3.x.x:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/boom/-/boom-3.2.2.tgz#0f0cc5d04adc5003b8c7d71f42cca7271fef0e78"
   dependencies:
@@ -270,6 +270,12 @@ boom@5.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-5.2.0.tgz#5dd9da6ee3a5f302077436290cb717d3f4a54e02"
   dependencies:
     hoek "4.x.x"
+
+boom@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/boom/-/boom-7.1.1.tgz#50392a4e3417e971f1ad28622c20e832275260bb"
+  dependencies:
+    hoek "5.x.x"
 
 bossy@3.x.x:
   version "3.0.4"
@@ -389,11 +395,11 @@ code@4.1.x:
   dependencies:
     hoek "4.x.x"
 
-code@^2.0.1:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/code/-/code-2.3.0.tgz#b0b74c69dd7dbf571fb5c9deca21ee48545313ba"
+code@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/code/-/code-5.2.0.tgz#fb3a5e247afc17e3d65c49e7ce0f69ebe51a75b5"
   dependencies:
-    hoek "4.x.x"
+    hoek "5.x.x"
 
 color-convert@^1.9.0:
   version "1.9.1"
@@ -901,13 +907,17 @@ heavy@4.x.x:
     hoek "4.x.x"
     joi "10.x.x"
 
-hoek@3.x.x, hoek@^3.0.4:
+hoek@3.x.x:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-3.0.4.tgz#268adff66bb6695c69b4789a88b1e0847c3f3123"
 
 hoek@4.x.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
+
+hoek@5.x.x, hoek@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/hoek/-/hoek-5.0.3.tgz#b71d40d943d0a95da01956b547f83c4a5b4a34ac"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
