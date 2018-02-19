@@ -38,8 +38,8 @@
     "eslint-plugin-standard": "^3.0.1",
     "hapi": "^11.1.1",
     "lab": "^14.0.0",
-    "rewire": "^2.4.0",
-    "sinon": "^1.17.2"
+    "rewire": "^3.0.2",
+    "sinon": "^4.3.0"
   },
   "dependencies": {
     "bluebird": "^3.0.5",
