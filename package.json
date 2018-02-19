@@ -4,7 +4,7 @@
   "description": "Hapi Plugin to handle Mongoose handshake and initial setup",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -a code -t 100 -L",
+    "test": "lab -a code -t 100 -L -I __core-js_shared__",
     "test-cov-html": "lab -a code -r html -o coverage.html"
   },
   "repository": {
@@ -18,7 +18,7 @@
     "mongodb"
   ],
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=8.9.0"
   },
   "author": "Andrew Silluron",
   "license": "MIT",
@@ -36,8 +36,8 @@
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "hapi": "^11.1.1",
-    "lab": "^14.0.0",
+    "hapi": "^17.2.0",
+    "lab": "^15.2.2",
     "rewire": "^3.0.2",
     "sinon": "^4.3.0"
   },
