@@ -5,7 +5,7 @@ const sinon = require('sinon');
 const EventEmitter = require('events').EventEmitter;
 const MongooseConnector = rewire('../lib/MongooseConnector');
 // This is required to trick lab coverage
-const MongooseConnector2 = require('../lib/MongooseConnector'); //eslint-disable-line
+let MongooseConnector2 = require('../lib/MongooseConnector'); //eslint-disable-line
 MongooseConnector2 = MongooseConnector;
 
 const lab = exports.lab = Lab.script();
