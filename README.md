@@ -15,43 +15,42 @@ npm install --save mongoose
 ```
 
 ## Usage
-```
-var options = {
+```javascript
+const options = {
     promises: 'native',
     uri: 'mongodb://localhost:27017'
 };
 
-var server = new Hapi.Server();
+const server = new Hapi.Server();
 
-server.register({
-    register: require('hapi-mongoose'),
+await server.register({
+    plugin: require('hapi-mongoose'),
     options: options
-}, function (err) { });
+});
 
-var db = server.plugins['hapi-mongoose'].connection;
+const db = server.plugins['hapi-mongoose'].connection;
 
-var mongoose = server.plugins['hapi-mongoose'].lib;
+const mongoose = server.plugins['hapi-mongoose'].lib;
 ```
 
 ### Example
-```
-var db = server.plugins['hapi-mongoose'].connection; // Get the current connection for this server instance
-var mongoose = server.plugins['hapi-mongoose'].lib;
-var Schema = mongoose.Schema;
+```javascript
+const db = server.plugins['hapi-mongoose'].connection; // Get the current connection for this server instance
+const mongoose = server.plugins['hapi-mongoose'].lib;
+const Schema = mongoose.Schema;
 
-var tankSchema = new Schema({
+const tankSchema = new Schema({
   //tank props
 });
 
-var Tank = db.model('Tank', tankSchema);
+const Tank = db.model('Tank', tankSchema);
 
-var small = new Tank({ size: 'small' });
+const small = new Tank({ size: 'small' });
 
 small.save(function (err) {
   if (err) return handleError(err);
   // saved!
-})
-
+});
 ```
 
 

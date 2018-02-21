@@ -1,5 +1,3 @@
-'use strict';
-
 const Code = require('code');
 const Hapi = require('hapi');
 const Lab = require('lab');
@@ -13,27 +11,34 @@ const expect = Code.expect;
 
 describe('Default Options', () => {
   let server, plugin;
-  let ConnectorStub = require('./artifacts/NoErrorConnector');
+  const ConnectorStub = require('./artifacts/NoErrorConnector');
+  const ErrorConnectorStub = require('./artifacts/ErrorConnector');
 
-  beforeEach(done => {
+  beforeEach(async () => {
     plugin = rewire('../');
     plugin.__set__('MongooseConnector', ConnectorStub);
     server = new Hapi.Server({ debug: false });
-    server.connection();
-    server.register({ register: plugin, options: {} }, () => {
-      done();
-    });
+    await server.register({ plugin: plugin, options: {} });
   });
 
-  it('sets up mongoose', done => {
+  it('sets up mongoose', () => {
     expect(server.plugins['hapi-mongoose'].connection).to.equal('connection');
-
-    done();
   });
 
-  it('allows for a reference to originally imported mongoose', done => {
+  it('allows for a reference to originally imported mongoose', () => {
     expect(server.plugins['hapi-mongoose'].lib).to.equal('original lib import');
+  });
 
-    done();
+  it('handles failures', async () => {
+    plugin = rewire('../');
+    plugin.__set__('MongooseConnector', ErrorConnectorStub);
+    server = new Hapi.Server({ debug: false });
+
+    try {
+      await server.register({ plugin: plugin, options: {} });
+      Code.fail('function must throw and no go here');
+    } catch (err) {
+      expect(err).to.be.error(Error, 'fail for testing');
+    }
   });
 });
