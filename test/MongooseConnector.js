@@ -16,7 +16,7 @@ const expect = Code.expect;
 
 describe('Default Options', () => {
   let mongooseConnector, mongooseEmitter, logSpy, pluginStub;
-  let MongooseEmitter = require('./artifacts/MongooseEmitter');
+  let MongooseEmitter = require('./artifacts/MongooseStub');
 
   beforeEach(() => {
     mongooseEmitter = new MongooseEmitter('connected');
@@ -48,7 +48,7 @@ describe('Default Options', () => {
 
 describe('With bluebird (bluebird)', () => {
   let mongooseConnector, mongooseEmitter, pluginStub; //eslint-disable-line
-  let MongooseEmitter = require('./artifacts/MongooseEmitter');
+  let MongooseEmitter = require('./artifacts/MongooseStub');
 
   beforeEach(() => {
     mongooseEmitter = new MongooseEmitter('connected');
@@ -66,7 +66,7 @@ describe('With bluebird (bluebird)', () => {
 
 describe('With es6 (es6)', () => {
   let mongooseConnector, mongooseEmitter, pluginStub; //eslint-disable-line
-  let MongooseEmitter = require('./artifacts/MongooseEmitter');
+  let MongooseEmitter = require('./artifacts/MongooseStub');
 
   beforeEach(() => {
     mongooseEmitter = new MongooseEmitter('connected');
@@ -84,7 +84,7 @@ describe('With es6 (es6)', () => {
 
 describe('With es6 (native)', () => {
   let mongooseConnector, mongooseEmitter, pluginStub; //eslint-disable-line
-  let MongooseEmitter = require('./artifacts/MongooseEmitter');
+  let MongooseEmitter = require('./artifacts/MongooseStub');
 
   beforeEach(() => {
     mongooseEmitter = new MongooseEmitter('connected');
@@ -102,7 +102,7 @@ describe('With es6 (native)', () => {
 
 describe('Default Options with failed connection', () => {
   let mongooseConnector, mongooseEmitter, logSpy, pluginStub;
-  let MongooseEmitter = require('./artifacts/MongooseEmitter');
+  let MongooseEmitter = require('./artifacts/MongooseStub');
 
   beforeEach(() => {
     mongooseEmitter = new MongooseEmitter('error', { message: 'test' });
@@ -133,7 +133,7 @@ describe('Default Options with failed connection', () => {
 
 describe('Default Options with closed connection', () => {
   let mongooseConnector, mongooseEmitter, logSpy, pluginStub;
-  let MongooseEmitter = require('./artifacts/MongooseEmitter');
+  let MongooseEmitter = require('./artifacts/MongooseStub');
 
   beforeEach(() => {
     mongooseEmitter = new MongooseEmitter('close');
@@ -158,7 +158,7 @@ describe('Default Options with closed connection', () => {
 
 describe('Default Options with disconnected connection', () => {
   let mongooseConnector, mongooseEmitter, logSpy, pluginStub;
-  let MongooseEmitter = require('./artifacts/MongooseEmitter');
+  let MongooseEmitter = require('./artifacts/MongooseStub');
 
   beforeEach(() => {
     mongooseEmitter = new MongooseEmitter('disconnected');
