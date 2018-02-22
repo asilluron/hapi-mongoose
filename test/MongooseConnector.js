@@ -46,6 +46,33 @@ describe('Default Options', () => {
   });
 });
 
+describe('Default Options with initial connect error', () => {
+  let mongooseConnector, mongooseEmitter, logSpy, pluginStub;
+  let FailingMongooseEmitter = require('./artifacts/FailingMongooseStub');
+
+  beforeEach(() => {
+    mongooseEmitter = new FailingMongooseEmitter('connected');
+    pluginStub = {
+      log: log => log
+    };
+    logSpy = sinon.spy(pluginStub, 'log');
+    MongooseConnector.__set__('mongoose', mongooseEmitter);
+    mongooseConnector = new MongooseConnector({ promises: 'mpromise' }, pluginStub);
+  });
+
+  it('logs and emits error', async () => {
+    mongooseConnector.on('error', (err) => {
+      expect(err.message).to.equal('I can only fail');
+    });
+    await new Promise((resolve, reject) => setTimeout(() => resolve(), 5));
+
+    const args = logSpy.getCall(0).args;
+
+    expect(args[0][0]).to.equal('error');
+    expect(args[1]).to.contain('I can only fail');
+  });
+});
+
 describe('With bluebird (bluebird)', () => {
   let mongooseConnector, mongooseEmitter, pluginStub; //eslint-disable-line
   let MongooseEmitter = require('./artifacts/MongooseStub');
